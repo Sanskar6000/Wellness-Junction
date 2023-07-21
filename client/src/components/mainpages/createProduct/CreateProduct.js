@@ -68,7 +68,7 @@ function CreateProduct() {
             formData.append('file', file)
 
             setLoading(true)
-            const res = await axios.post('http://localhost:5000/api/upload', formData, {
+            const res = await axios.post('https://wellness-junction.onrender.com/api/upload', formData, {
                 headers: {'content-type': 'multipart/form-data', Authorization: token}
             })
             setLoading(false)
@@ -83,7 +83,7 @@ function CreateProduct() {
         try {
             if(!isAdmin) return alert("You're not an admin")
             setLoading(true)
-            await axios.post('http://localhost:5000/api/destroy', {public_id: images.public_id}, {
+            await axios.post('https://wellness-junction.onrender.com/api/destroy', {public_id: images.public_id}, {
                 headers: {Authorization: token}
             })
             setLoading(false)
@@ -105,11 +105,11 @@ function CreateProduct() {
             if(!images) return alert("No Image Upload")
 
             if(onEdit){
-                await axios.put(`http://localhost:5000/api/products/${product._id}`, {...product, images}, {
+                await axios.put(`https://wellness-junction.onrender.com/api/products/${product._id}`, {...product, images}, {
                     headers: {Authorization: token}
                 })
             }else{
-                await axios.post('http://localhost:5000/api/products', {...product, images}, {
+                await axios.post('https://wellness-junction.onrender.com/api/products', {...product, images}, {
                     headers: {Authorization: token}
                 })
             }

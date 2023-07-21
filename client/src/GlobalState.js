@@ -23,7 +23,7 @@ export const DataProvider = ({children}) =>{
             // ...It will check if there is token available in Authorization header and send response as...
             // ...True or false which will be in ***response.data***
             console.log(`HELLO`);
-            const verified = await axios.get('http://localhost:5000/user/verify', {
+            const verified = await axios.get('https://wellness-junction.onrender.com/user/verify', {
               headers: { Authorization: accessToken },
             });
             console.log(verified.data);

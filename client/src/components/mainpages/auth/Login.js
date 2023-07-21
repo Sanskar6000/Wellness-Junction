@@ -17,7 +17,7 @@ function Login() {
   const loginSubmit = async e =>{
     e.preventDefault()
     try {
-        const res = await axios.post('http://localhost:5000/user/login', {...user})
+        const res = await axios.post('https://wellness-junction.onrender.com/user/login', {...user})
 
         localStorage.setItem('tokenStore', res.data.token);
         

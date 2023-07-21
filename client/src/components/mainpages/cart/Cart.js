@@ -23,7 +23,7 @@ function Cart() {
     },[cart])
 
     const addToCart = async (cart) =>{
-        await axios.patch('http://localhost:5000/user/addcart', {cart}, {
+        await axios.patch('https://wellness-junction.onrender.com/user/addcart', {cart}, {
             headers: {Authorization: token}
         })
     }

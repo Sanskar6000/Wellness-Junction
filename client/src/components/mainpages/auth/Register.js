@@ -17,7 +17,7 @@ function Register() {
   const registerSubmit = async e =>{
     e.preventDefault()
     try {
-        const res = await axios.post('http://localhost:5000/user/register', {...user})
+        const res = await axios.post('https://wellness-junction.onrender.com/user/register', {...user})
 
         localStorage.setItem('tokenStore', res.data.token);
         

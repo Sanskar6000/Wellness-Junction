@@ -11,7 +11,7 @@ function UserAPI(token) {
         if(token){
             const getUser = async () =>{
                 try {
-                    const res = await axios.get('http://localhost:5000/user/infor', {
+                    const res = await axios.get('https://wellness-junction.onrender.com/user/infor', {
                         headers: {Authorization: token}
                     })
                     console.log(`Dhruv: ${res}`);
