@@ -11,6 +11,7 @@ function Header() {
     const [isAdmin] = state.userAPI.isAdmin
     const [cart] = state.userAPI.cart
 
+    //Logout Function
     const logoutUser = async () =>{
         localStorage.clear();
         
@@ -40,7 +41,7 @@ function Header() {
 
     return (
         <header>
-        
+            {/* Conditional Rendering */}
             <div className="logo">
                 <h1>
                     <Link to="/">{isAdmin ? 'Admin Panel' : 'Wellness Junction'}</Link>
@@ -50,6 +51,7 @@ function Header() {
             <ul className={isAdmin ? 'admin-ul' : 'user-ul'}>
                 <li><Link to="/">{isAdmin ? 'Products' : 'Home'}</Link></li>
 
+                {/* Render the links only if user has admin previledge */}
                 {isAdmin && adminRouter()}
 
                 {
@@ -57,7 +59,7 @@ function Header() {
                 }
 
             </ul>
-
+                {/* Display Cart only if user is not admin */}
             {
                 isAdmin ? '' 
                 :<div className="cart-icon">

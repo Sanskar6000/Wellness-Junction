@@ -43,7 +43,8 @@ const productSchema = new mongoose.Schema({
         default: 0
     }
 }, {
-    timestamps: true //important
+    //important: used for sorting -createdAt
+    timestamps: true 
 })
 
 

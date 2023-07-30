@@ -17,6 +17,7 @@ function Pages() {
   const [isAdmin] = state.userAPI.isAdmin;
 
   return (
+    //Navigation ans rendering logic
     <Routes>
       <Route path="/" element={<Products />} />
       <Route path="/detail/:id" element={<DetailProduct />} />

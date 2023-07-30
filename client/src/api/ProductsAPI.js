@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 
-
+//Custom Function
 function ProductsAPI() {
     const [products, setProducts] = useState([])
     const [callback, setCallback] = useState(false)
@@ -11,11 +11,12 @@ function ProductsAPI() {
     const [page, setPage] = useState(1)
     const [result, setResult] = useState(0)
 
+    //fetch products from server whenever there is a change in callback, category, sort, search and page
     useEffect(() =>{
         const getProducts = async () => {
             const res = await axios.get(`https://wellness-junction.onrender.com/api/products?limit=${page*9}&${category}&${sort}&title[regex]=${search}`)
             setProducts(res.data.products)
-            setResult(res.data.result)
+            setResult(res.data.result) //Total number of products
         }
         getProducts()
     },[callback, category, sort, search, page])

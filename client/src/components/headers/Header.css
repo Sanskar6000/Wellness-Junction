@@ -1,4 +1,4 @@
-/* Header Styles */
+
 header {
     display: flex;
     justify-content: space-between;
@@ -48,8 +48,7 @@ header {
   ul li a:hover {
     color: #f39c12;
   }
-  
-  /* Cart Icon Styles */
+ 
   .cart-icon {
     position: relative;
   }
@@ -68,7 +67,6 @@ header {
   .cart-icon img {
     cursor: pointer;
     transition: transform 0.3s ease;
-    /* Set the cart icon color to white */
     fill: #fff;
   }
   

@@ -6,6 +6,7 @@ router.post('/register', userCtrl.register)
 
 router.post('/login', userCtrl.login)
 
+//requires authorization for getting user data and using add to cart functionality
 router.get('/infor', auth, userCtrl.getUser)
 
 router.patch('/addcart', auth, userCtrl.addCart)

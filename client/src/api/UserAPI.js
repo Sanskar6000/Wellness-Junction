@@ -7,14 +7,13 @@ function UserAPI(token) {
     const [cart, setCart] = useState([])
 
     useEffect(() =>{
-        console.log(`Sanskar: ${token}`);
         if(token){
             const getUser = async () =>{
                 try {
                     const res = await axios.get('https://wellness-junction.onrender.com/user/infor', {
                         headers: {Authorization: token}
                     })
-                    console.log(`Dhruv: ${res}`);
+                    
                     setIsLogged(true)
                     res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
 
@@ -32,6 +31,7 @@ function UserAPI(token) {
 
     
 
+    //Add {product, quantity} to the cart item
     const addCart = async (product) => {
         if(!isLogged) return alert("Please login to continue buying")
 

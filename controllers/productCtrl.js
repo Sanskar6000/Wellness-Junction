@@ -1,17 +1,20 @@
 const Products = require('../models/productModel')
 
-// Filter, sorting and paginating
+// Class for Filter, sorting and paginating on MongoDB queries
 class APIfeatures {
     constructor(query, queryString){
         this.query = query;
+        //req.query
         this.queryString = queryString;
     }
     filtering(){
        const queryObj = {...this.queryString} //queryString = req.query
 
+       //Don't include these parameters for filtering 
        const excludedFields = ['page', 'sort', 'limit']
        excludedFields.forEach(el => delete(queryObj[el]))
        
+       //Convert queryObject to string and replace keywords to their mongoDB equivalents
        let queryStr = JSON.stringify(queryObj)
        queryStr = queryStr.replace(/\b(gte|gt|lt|lte|regex)\b/g, match => '$' + match)
 
@@ -24,7 +27,9 @@ class APIfeatures {
        return this;
     }
 
+    //Handles sorting
     sorting(){
+        //if sort parameter exists in query String 
         if(this.queryString.sort){
             const sortBy = this.queryString.sort.split(',').join(' ')
             this.query = this.query.sort(sortBy)
@@ -35,7 +40,9 @@ class APIfeatures {
         return this;
     }
 
+    //Pagination
     paginating(){
+        //defaults to 1 for page and 9 for limit if they are invalid
         const page = this.queryString.page * 1 || 1
         const limit = this.queryString.limit * 1 || 9
         const skip = (page - 1) * limit;
